@@ -13,6 +13,12 @@ function round({number=0, direction=DIRECTIONS.HALF_UP, precision=2}) {
     case DIRECTIONS.HALF_UP: {
       return sign * Math.round(Math.abs(number) * power) / power;
     }
+    case DIRECTIONS.UP: {
+      return sign * Math.ceil(Math.abs(number) * power) / power;
+    }
+    case DIRECTIONS.HALF_DOWN: {
+      return sign * Math.floor(Math.abs(number) * power) / power;
+    }
   }
 }
 
