@@ -1,6 +1,6 @@
 {
   "name": "@matthewmorgan/round-half-up",
-  "version": "0.2.4",
+  "version": "0.2.8",
   "description": "A module for rounding decimals in JavaScript",
   "main": "round.js",
   "scripts": {
@@ -13,10 +13,11 @@
   },
   "keywords": [
     "Math",
-    "rounding",
+    "decimal rounding",
     "decimal",
     "currency",
-    "money"
+    "money",
+    "round half up"
   ],
   "author": "Matthew Morgan",
   "license": "MIT",
