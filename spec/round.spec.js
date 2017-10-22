@@ -103,6 +103,54 @@ describe('Round HALF_DOWN handles edge cases', ()=> {
   });
 });
 
+describe('Round UP for positive numbers', ()=> {
+  test('can round pi UP to 2 decimal places', ()=>{
+    let number = 3.14159;
+    let direction = DIRECTIONS.UP;
+    let precision = 2;
+    expect(round({number, direction, precision})).toEqual(3.15);
+  });
+
+  test('can round pi UP to 3 decimal places', ()=>{
+    let number = 3.14159;
+    let direction = DIRECTIONS.UP;
+    let precision = 3;
+    expect(round({number, direction, precision})).toEqual(3.142);
+  });
+});
+
+describe('Round UP for negative numbers', ()=> {
+  test('can round -pi UP to 2 decimal places', ()=>{
+    let number = -3.14159;
+    let direction = DIRECTIONS.UP;
+    let precision = 2;
+    expect(round({number, direction, precision})).toEqual(-3.15);
+  });
+
+  test('can round -pi UP to 3 decimal places', ()=>{
+    let number = -3.14159;
+    let direction = DIRECTIONS.UP;
+    let precision = 3;
+    expect(round({number, direction, precision})).toEqual(-3.142);
+  });
+});
+
+describe('Round UP handles edge cases', ()=> {
+  test('supplied precision is longer than number', ()=> {
+    let number = 3.14159;
+    let direction = DIRECTIONS.UP;
+    let precision = 10;
+    expect(round({number, direction, precision})).toEqual(3.14159);
+  });
+
+  test('number is undefined', ()=> {
+    let number;
+    let direction = DIRECTIONS.UP;
+    let precision = 10;
+    expect(round({number, direction, precision})).toEqual(0);
+  });
+});
+
 
 
 
