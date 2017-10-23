@@ -5,6 +5,10 @@ const DIRECTIONS = {
   DOWN: 2
 };
 
+function roundSimple(number=0){
+  return round({number});
+}
+
 function round({number=0, direction=DIRECTIONS.HALF_UP, precision=2}) {
   const sign = Math.sign(number);
   const power = 10**precision;
@@ -17,10 +21,19 @@ function round({number=0, direction=DIRECTIONS.HALF_UP, precision=2}) {
       return sign * Math.ceil(Math.abs(number) * power) / power;
     }
     case DIRECTIONS.HALF_DOWN: {
+      let n = String(Math.abs(number) * power);
+      // force a decimal if needed
+      n = n.indexOf('.') !== -1 ? n : `$[n}.0`;
+      if (+n.split('.')[1].slice(0,1) > 5){
+        return sign * Math.ceil(Math.abs(number) * power) / power;
+      }
       return sign * Math.floor(Math.abs(number) * power) / power;
+    }
+    case DIRECTIONS.DOWN: {
+      return sign * Math.ceil(Math.abs(number) * power) / power;
     }
   }
 }
 
 
-export { round, DIRECTIONS };
+export { round, roundSimple, DIRECTIONS };
